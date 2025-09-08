@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button, Stack, Title, Divider, Container } from "@mantine/core";
 import { v4 as uuidv4 } from "uuid";
+import AddExpenseModal from "../components/Modal";
 
 type Expense = {
   id: string;
@@ -19,13 +20,20 @@ export default function ExpenseTracker() {
       <Title order={2} mb="md">
         Expense Tracker
       </Title>
-      <Button>Add Expense Item</Button>
+      <Button onClick={() => setOpened(!opened)}>
+        Add Expense Item
+      </Button>
       {/* Type additional AddExpenseModal here. */}
+      {opened && <AddExpenseModal/>}
 
       <Divider my="md" />
       {/* Type additional total cost here. */}
-      <Title order={4}>Total cost: {} Baht</Title>
-      <Stack my="sm">{/* Type additional text here. */}</Stack>
+      <Title order={4}>Total cost: {0} Baht</Title>
+      <Stack my="sm">{/* Type additional text here. */}
+        <div>Food: {0} Baht</div>
+        <div>Transport: {0} Baht</div>
+        <div>Entertainment: {0} Baht</div>
+      </Stack>
 
       <Divider my="md" />
       {/* Type additional card here. */}
